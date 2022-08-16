@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "proyectoIpf",
+    "slug": "proyectoIpf",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "proyectoIpf"
+}
