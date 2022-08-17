@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        boxShadow: '0 3px 13px 1px rgb(0 0 0 / 9%)',
+        boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
 
     },
     imagen:{
@@ -27,7 +27,9 @@ const styles = StyleSheet.create({
     width: '100%',
     },
     nombre:{
-        fontSize: '1.3rem',
+        fontSize: '30px',
+        fontFamily:'Aboreto',
+
         
 
     },
