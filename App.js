@@ -1,55 +1,71 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { View, Button } from 'react-native';
-import styles from './src/styles/HomeStyle';
+// In App.js in a new project
+
+import * as React from 'react';
+import { View, Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Tarjeta from './src/componentes/Tarjeta';
-import { useState } from 'react';
+import { Button } from 'react-native-web';
 
-
-
-export default function App() {
-
-  const [tarjeta, setTarjeta] = useState("");
-
+function HomeScreen() {
   return (
-    <View style={styles.container}>
-      <div>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
 
-      <Button style={styles.boton} 
-        onPress={() => setTarjeta("jungkook")}
-        title="Press Me to know Jungkook"/>
-          <br></br>
-        <Button style={styles.boton} 
-        onPress={() => setTarjeta("jimin")}
-        title="Press Me to know Jimin"/>
+function ViewTarjeta({ navigation }){
+  return(
 
+    <View>
 
-      </div>
-      
-        { tarjeta === 'jungkook' && <Tarjeta
-        
+        <Tarjeta
         nombre='Jeon Jungkook'
         imagen='jungkook1'
         cargo='Bailarín, cantante, compositor'
-        texto='Nacido en Busan, Corea en 1997. askjasdjadjasd asdjajsdajda ajdsajsdajsd ajsdjasd jsdjsda ajsdjasd '/> 
-         }
+        texto='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla '/>
+    
+        <Button 
+        onPress={()=> navigation.navigate('Home')}
+        title='CLICK'
+        />
 
-         { tarjeta === 'jimin' && <Tarjeta
-          nombre='Jimin'
-          imagen='hoseok'
-          cargo='Bailarín, cantante, compositor'
-          texto='Nacido en Busan, Corea en 1997. askjasdjadjasd asdjajsdajda ajdsajsdajsd ajsdjasd jsdjsda ajsdjasd '
-         />
-         }
+        <Button
+          title="Go to Tarjeta... again"
+          onPress={() => navigation.push('Tarjeta')}
+        />
         
+        <Button title="Go back" onPress={() => navigation.goBack()} />
 
-     
-      
-      
+        <Button
+        title="Go back to first screen in stack"
+        onPress={() => navigation.popToTop()}
+      />
 
-      <StatusBar style="auto" />
-    </View>
+       
+        </View>
+    
+
+
+  )
+}
+
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Tarjeta" component={ViewTarjeta}/>
+        <Stack.Screen name="Home" component={HomeScreen} />
+       
+        
+      </Stack.Navigator>
+    </NavigationContainer>
+
     
   );
 }
 
+export default App;
